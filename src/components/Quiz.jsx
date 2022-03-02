@@ -22,14 +22,14 @@ class Quiz extends React.Component {
   state = {
     problem: "",
     symbol: symb,
-    question:[],
+    question: [],
     answer: [],
     modal: "",
     modalShowing: false,
-      streaks: 0,
-      currentDifficulty: dif,
-      orders:order,
-    units:unit,
+    streaks: 0,
+    currentDifficulty: dif,
+    orders: order,
+    units: unit,
     totalProblems: 1,
   };
 
@@ -69,8 +69,8 @@ class Quiz extends React.Component {
   };
 
   componentDidMount() {
-      this._isMounted = true;
-      this.getProblem(this.state.orders);
+    this._isMounted = true;
+    this.getProblem(this.state.orders);
 
     // this.answerInput.focus();
   }
@@ -94,7 +94,7 @@ class Quiz extends React.Component {
 
   wrongAnswer = () => {
     this._isMounted && this.props.onWrongAnswer();
-    
+
     this.setState({
       streaks: 0
     });
@@ -103,8 +103,8 @@ class Quiz extends React.Component {
   };
 
   nextProblem = () => {
-      setTimeout(() => {
-          this.getProblem(this.state.orders);
+    setTimeout(() => {
+      this.getProblem(this.state.orders);
       this._isMounted &&
         this.setState({
           modalShowing: false,
@@ -119,17 +119,17 @@ class Quiz extends React.Component {
       //       streaks : 0,
       //       totalProblems :0,
       //       currentDifficulty : 'i',
-            
+
       //     });
       //   }
-        
+
       //   else if(this.state.currentDifficulty == 'i')
       //   {
       //     this.setState({
       //       streaks : 0,
       //       totalProblems :0,
       //       currentDifficulty : 'h',
-            
+
       //     });
       //   }
       //   // else if(this.state.currentDifficulty == 'h')
@@ -143,39 +143,36 @@ class Quiz extends React.Component {
       //   //   });
       //   // }
       //}
+    }
+      , 2500);
+  };
+
+  evaluateProblem = (attemptedAnswer) => {
+    let correct = true
+    for (var i = 0; i < attemptedAnswer.length; i++) {
+      if (attemptedAnswer[i] != this.state.answer[i]) {
+        correct = false
+        break
       }
-    , 2500);
+    }
+    const type = order == "asc" ? ",<" : ",>"
+    const question = this.state.question.toString() + type
+    sessionData.hitApi(question, attemptedAnswer.toString(), this.state.answer.toString(), this.state.currentDifficulty, this.state.units, correct ? 1 : 0, [1,2,3])
+    if (!correct) {
+      return this.wrongAnswer()
+    }
+    return this.correctAnswer()
   };
 
-    evaluateProblem = (attemptedAnswer) => {
-        for (var i = 0; i < attemptedAnswer.length; i++)
-        {
-            if (attemptedAnswer[i] != this.state.answer[i]) {
-                return this.wrongAnswer();
-            }
-            
-            
-        }
-         return this.correctAnswer();
-    //if (attemptedAnswer == this.state.answer) {
-     // sessionData.hitApi(this.state.problem,attemptedAnswer,this.state.answer,this.state.currentDifficulty,this.state.units, 1)
-      //return this.correctAnswer();
-    //}
-  //  else{
-  //    sessionData.hitApi(this.state.problem,attemptedAnswer,this.state.answer,this.state.currentDifficulty,this.state.units,0)
-   // }
-   // return this.wrongAnswer();
+  keyingUp = ev => {
+    if (ev.key === "Enter") {
+      this.evaluateProblem();
+    }
+    const val = ev.target.value;
+    this.setState({
+      answer: Number(val.match(/((-?)\d+)/g)) // accept just numbers and the minus symbol
+    });
   };
-
-  // keyingUp = ev => {
-  //   if (ev.key === "Enter") {
-  //     this.evaluateProblem();
-  //   }
-  //   const val = ev.target.value;
-  //   this.setState({
-  //     answer: Number(val.match(/((-?)\d+)/g)) // accept just numbers and the minus symbol
-  //   });
-  // };
 
   showModal = (type, text) => {
     this.setState({
@@ -185,74 +182,74 @@ class Quiz extends React.Component {
   };
 
   getProblem = (orders) => {
-      const newProblemSet = MathHelper.generateAdditionProblem(this.state.units, this.state.currentDifficulty);
-      let questions = newProblemSet.question;
-      //this.state.question = newProblemSet.question;
-      if (orders == "asc") {
-          this._isMounted &&
+    const newProblemSet = MathHelper.generateAdditionProblem(this.state.units, this.state.currentDifficulty);
+    let questions = newProblemSet.question;
+    //this.state.question = newProblemSet.question;
+    if (orders == "asc") {
+      this._isMounted &&
 
-              this.setState({
+        this.setState({
 
-                  symbol: ",",
-                  question: newProblemSet.question,
-                  answer: [...questions].sort((a,b)=>a-b)
-              });
-      }
-      else {
-          this._isMounted &&
+          symbol: ",",
+          question: newProblemSet.question,
+          answer: [...questions].sort((a, b) => a - b)
+        });
+    }
+    else {
+      this._isMounted &&
 
-              this.setState({
+        this.setState({
 
-                  symbol: ",",
-                  question: newProblemSet.question,
-                  answer: [...questions].sort((a, b) => b - a)
-              });
-      }
+          symbol: ",",
+          question: newProblemSet.question,
+          answer: [...questions].sort((a, b) => b - a)
+        });
+    }
   };
 
 
 
   render() {
 
-  return (
-    <section className="show-up" style={{ width: "100%", height: "100vh" }}>
-      <div >
-        {this.state.modalShowing ? (
-          this.state.modal
-        ) : (
-          <div>
-            <div>
-              <div style={{ borderBottom: "1px solid #aaa", fontSize: "1.5em", marginTop: "30vh", marginLeft: "15%", width: "100%" }}>
-                  {/* <div>{this.state.units}</div> */}
-                  {/* <div>{this.state.currentDifficulty}</div> */}
-                  
-                <div style={{ display: "flex", marginLeft: "3vw" }}>
-                                      <div style={{ display: "flex" }}>
+    return (
+      <section className="show-up" style={{ width: "100%", height: "100vh" }}>
+        <div >
+          {this.state.modalShowing ? (
+            this.state.modal
+          ) : (
+              <div>
+                <div>
+                  <div style={{ borderBottom: "1px solid #aaa", fontSize: "1.5em", marginTop: "30vh", marginLeft: "15%", width: "100%" }}>
+                    {/* <div>{this.state.units}</div> */}
+                    {/* <div>{this.state.currentDifficulty}</div> */}
 
-                                          {this.state.question.map(opt => {
-                                              return (
-                                                  <div>{opt},</div>
-                                                      
-                                                                                                )
-                                          })}
+                    <div style={{ display: "flex", marginLeft: "3vw" }}>
+                      <div style={{ display: "flex" }}>
 
-                                      </div>
-                  
-                
-                                  </div>
+                        {this.state.question.map(opt => {
+                          return (
+                            <div>{opt},</div>
 
-                                  {this._isMounted && <Options handleClick={(ans) => this.evaluateProblem(ans)} correctAnswer={this.state.answer} prob={this.state.question}  />}
+                          )
+                        })}
+
+                      </div>
 
 
+                    </div>
 
-                              </div>
-          </div>
-      </div>
-        )}
-    </div>
-    </section >
+                    {this._isMounted && <Options handleClick={(ans) => this.evaluateProblem(ans)} correctAnswer={this.state.answer} prob={this.state.question} />}
 
-  );
+
+
+                  </div>
+                </div>
+              </div>
+            )}
+        </div>
+      </section >
+
+    );
 
 
   }

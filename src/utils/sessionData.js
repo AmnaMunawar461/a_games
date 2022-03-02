@@ -20,24 +20,25 @@ const type = queryParams.get('type') ? queryParams.get('type') : 'c'
 //     index += 1
 //     //console.log(data)
 // }
-const hitApi = (problem, attemptedAnswer, answer, currentDifficulty, units, st) => {
-    
-    const limit = queryParams.get('limit');
-    const cid = queryParams.get('cid');
-    const crcid = queryParams.get('crcid');
-    const sid = queryParams.get('sid');
-    const uid = queryParams.get('uid');
-    const id = queryParams.get('id');
+const hitApi = (problem, attemptedAnswer, answer, currentDifficulty, units, st, options) => {
+    alert("callled");
+    const cid = queryParams.get('cid') ? queryParams.get('cid') :  1;
+    const crcid = queryParams.get('crcid') ? queryParams.get('crcid') : 1;
+    const sid = queryParams.get('sid') ? queryParams.get('sid') : 1;
+    const uid = queryParams.get('uid') ? queryParams.get('uid') : 1;
+    const id = queryParams.get('id') ? queryParams.get('id') : 1;
+    console.log("https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt="+options)
     $.ajax({
-        url: "https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt=" + "g",
+        url: "https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt=" + options,
         type: "post",
         data: "",
         success: function (data) {
-            console.log(data)
-            //alert("hit")
+            console.log(data);
+            alert("hit");
         },
         error: function (data) {
-            //alert(data);
+            console.log(data);
+            alert("error");
         }
     });
 
