@@ -1,0 +1,22 @@
+{
+  "main.css": "/ascDscGames/static/css/main.8b37c879.chunk.css",
+  "main.js": "/ascDscGames/static/js/main.72072217.chunk.js",
+  "main.js.map": "/ascDscGames/static/js/main.72072217.chunk.js.map",
+  "runtime~main.js": "/ascDscGames/static/js/runtime~main.b43dfd8c.js",
+  "runtime~main.js.map": "/ascDscGames/static/js/runtime~main.b43dfd8c.js.map",
+  "static/css/2.3963232a.chunk.css": "/ascDscGames/static/css/2.3963232a.chunk.css",
+  "static/js/2.50190508.chunk.js": "/ascDscGames/static/js/2.50190508.chunk.js",
+  "static/js/2.50190508.chunk.js.map": "/ascDscGames/static/js/2.50190508.chunk.js.map",
+  "index.html": "/ascDscGames/index.html",
+  "precache-manifest.2a665931ab52fb706d4f1cecdf9a7c3c.js": "/ascDscGames/precache-manifest.2a665931ab52fb706d4f1cecdf9a7c3c.js",
+  "service-worker.js": "/ascDscGames/service-worker.js",
+  "static/css/2.3963232a.chunk.css.map": "/ascDscGames/static/css/2.3963232a.chunk.css.map",
+  "static/css/main.8b37c879.chunk.css.map": "/ascDscGames/static/css/main.8b37c879.chunk.css.map",
+  "static/media/321go.mp3": "/ascDscGames/static/media/321go.8efff185.mp3",
+  "static/media/background.gif": "/ascDscGames/static/media/background.efc0e331.gif",
+  "static/media/bar.png": "/ascDscGames/static/media/bar.669f8cdb.png",
+  "static/media/grocerySound.mp3": "/ascDscGames/static/media/grocerySound.a0d6b138.mp3",
+  "static/media/rightAnswer.mp3": "/ascDscGames/static/media/rightAnswer.09b0b7bb.mp3",
+  "static/media/tostartpressbutton.mp3": "/ascDscGames/static/media/tostartpressbutton.424d1898.mp3",
+  "static/media/wrongAnswer.mp3": "/ascDscGames/static/media/wrongAnswer.ddcbc59b.mp3"
+}
