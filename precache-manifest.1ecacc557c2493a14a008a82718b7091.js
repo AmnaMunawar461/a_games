@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e6a55f9882e15f635b47",
+    "revision": "1864d11be8d9adbb54bd",
     "url": "/ascDscGames/static/css/main.8b37c879.chunk.css"
   },
   {
-    "revision": "e6a55f9882e15f635b47",
-    "url": "/ascDscGames/static/js/main.daf60b66.chunk.js"
+    "revision": "1864d11be8d9adbb54bd",
+    "url": "/ascDscGames/static/js/main.3202bedb.chunk.js"
   },
   {
     "revision": "c99aee981e77ca41c1f2",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/ascDscGames/static/media/bar.669f8cdb.png"
   },
   {
-    "revision": "81da4ed11b3ef9231106bee6943e8afc",
+    "revision": "457b6f6d7d15c18f514ed4774b554c12",
     "url": "/ascDscGames/index.html"
   }
 ];
