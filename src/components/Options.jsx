@@ -16,6 +16,12 @@ export default function Options(props) {
         setChoices(tempArr)
         
     },[])
+    useEffect(() => {
+        if(choices.length <=0 ) return
+        props.setOptions(choices)
+
+
+    },[choices])
 
     
 

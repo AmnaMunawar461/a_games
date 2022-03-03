@@ -31,6 +31,7 @@ class Quiz extends React.Component {
     orders: order,
     units: unit,
     totalProblems: 1,
+    options: []
   };
 
   earnLife = () => {
@@ -155,9 +156,9 @@ class Quiz extends React.Component {
         break
       }
     }
-    const type = order == "asc" ? ",<" : ",>"
-    const question = this.state.question.toString() + type
-    sessionData.hitApi(question, attemptedAnswer.toString(), this.state.answer.toString(), this.state.currentDifficulty, this.state.units, correct ? 1 : 0, [1,2,3])
+    const type = order == "asc" ? "order is ascending" : "order is descending"
+    const question =  type + this.state.question.toString()
+    sessionData.hitApi(question, attemptedAnswer.toString(), this.state.answer.toString(), this.state.currentDifficulty, this.state.units, correct ? 1 : 0, this.state.options)
     if (!correct) {
       return this.wrongAnswer()
     }
@@ -238,7 +239,7 @@ class Quiz extends React.Component {
 
                     </div>
 
-                    {this._isMounted && <Options handleClick={(ans) => this.evaluateProblem(ans)} correctAnswer={this.state.answer} prob={this.state.question} />}
+                    {this._isMounted && <Options handleClick={(ans) => this.evaluateProblem(ans)} correctAnswer={this.state.answer} prob={this.state.question}  setOptions={(options) => { this.setState({options : options})}} />}
 
 
 
