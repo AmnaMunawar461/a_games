@@ -29,7 +29,7 @@ const hitApi = (problem, attemptedAnswer, answer, currentDifficulty, units, st, 
     const id = queryParams.get('id') ? queryParams.get('id') : 1;
     //console.log("https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt="+options)
     $.ajax({
-        url: "https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt=" + "[1,2,3],[5,6,7,8],[8,6,5,4]",
+        url: "https://kicc.pk/iParhai/api.php?prb=" + problem + "&aa=" + attemptedAnswer + "&ca=" + answer + "&tt=" + 5 + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + currentDifficulty + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt=" + options,
         type: "post",
         data: "",
         success: function (data) {
