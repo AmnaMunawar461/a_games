@@ -156,8 +156,8 @@ class Quiz extends React.Component {
         break
       }
     }
-    const type = order == "asc" ? "order is ascending" : "order is descending"
-    const question =  type + this.state.question.toString()
+    const type = order == "asc" ? " [ Write it in ascending order " : "Write it in descending order "
+    const question =  type + this.state.question.toString()+ " ]"
     sessionData.hitApi(question, attemptedAnswer.toString(), this.state.answer.toString(), this.state.currentDifficulty, this.state.units, correct ? 1 : 0, this.state.options)
     if (!correct) {
       return this.wrongAnswer()
